@@ -1,5 +1,6 @@
 ﻿using DnDServer.Entities;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -18,10 +19,20 @@ namespace DnDServer.Controllers
         // POST: api/Characters
         public void Post([FromBody]dynamic value)
         {
-            switch (value.Action)
+            var elem = "";
+            try
+            {
+                elem = JsonConvert.DeserializeObject(value);
+            }catch(Exception e)
+            {
+                var b = e;
+            }
+
+            switch ("")
             {
                 case "Load":
                     {
+                        var a = value.UserName;
                         if (characters.ContainsKey(value.UserName))
                         {
                             characters.Remove(value.UserName);
@@ -33,6 +44,7 @@ namespace DnDServer.Controllers
                     }
                 case "Change":
                     {
+
                         break;
                     }
             }
