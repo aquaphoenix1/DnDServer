@@ -1,6 +1,5 @@
 ﻿using DnDServer.Entities;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -8,7 +7,7 @@ namespace DnDServer.Controllers
 {
     public class CharactersController : ApiController
     {
-        private Dictionary<string, Character> characters = new Dictionary<string, Character>();
+        private static Dictionary<string, dynamic> characters = new Dictionary<string, dynamic>();
 
         // GET: api/Characters
         public string Get()
@@ -19,34 +18,31 @@ namespace DnDServer.Controllers
         // POST: api/Characters
         public void Post([FromBody]dynamic value)
         {
-            var elem = "";
             try
             {
-                elem = JsonConvert.DeserializeObject(value);
-            }catch(Exception e)
-            {
-                var b = e;
-            }
-
-            switch ("")
-            {
-                case "Load":
-                    {
-                        var a = value.UserName;
-                        if (characters.ContainsKey(value.UserName))
+                string action = value.Action;
+                switch (action)
+                {
+                    case "Load":
                         {
-                            characters.Remove(value.UserName);
+                            string name = value.UserName;
+                            if (characters.ContainsKey(name))
+                            {
+                                characters.Remove(name);
+                            }
+
+                            characters.Add(name, value.Value);
+
+                            break;
                         }
+                    case "Change":
+                        {
 
-                        characters.Add(value.UserName, value.Value);
-
-                        break;
-                    }
-                case "Change":
-                    {
-
-                        break;
-                    }
+                            break;
+                        }
+                }
+            }
+            catch {
             }
         }
     }
