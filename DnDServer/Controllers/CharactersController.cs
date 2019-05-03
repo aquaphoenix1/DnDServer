@@ -45,8 +45,7 @@ namespace DnDServer.Controllers
                                 case "XP":
                                     {
                                         var a = characters[name];
-                                        var b = a.XP;
-                                        b = (int)value.Value;
+                                        a.XP = (int)value.Value;
                                         break;
                                     }
                                 case "Current HP":
