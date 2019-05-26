@@ -50,10 +50,14 @@ namespace DnDServer.Controllers
                                     }
                                 case "Current HP":
                                     {
+                                        var a = characters[name];
+                                        a.currentHP = (int)value.Value;
                                         break;
                                     }
                                 case "Time HP":
                                     {
+                                    var a = characters[name];
+                                        a.timeHP = (int)value.Value;
                                         break;
                                     }
                                 case "CheckBox Bone HP":
@@ -87,22 +91,32 @@ namespace DnDServer.Controllers
                                     }
                                 case "Copper":
                                     {
+                                    var a = characters[name];
+                                        a.copper = (int)value.Value;
                                         break;
                                     }
                                 case "Silver":
                                     {
+                                    var a = characters[name];
+                                        a.silver = (int)value.Value;
                                         break;
                                     }
                                 case "Electro":
                                     {
+                                    var a = characters[name];
+                                        a.electro = (int)value.Value;
                                         break;
                                     }
                                 case "Gold":
                                     {
+                                    var a = characters[name];
+                                        a.gold = (int)value.Value;
                                         break;
                                     }
                                 case "Platinum":
                                     {
+                                    var a = characters[name];
+                                        a.platinum = (int)value.Value;
                                         break;
                                     }
                                 case "d1":
@@ -122,6 +136,8 @@ namespace DnDServer.Controllers
                                     }
                                 case "Inspiration":
                                     {
+                                    var a = characters[name];
+                                        a.inspiration = (bool)value.Value;
                                         break;
                                     }
                             }
